@@ -6,13 +6,13 @@ Prerequisites
 
 Javascript Integration Steps
 
-- Step 1 : Create Payment link from Server
-- Step 2 : Pass order id to the Checkout SDK
+- Step 1 : Create Payment link using API/SDK
+- Step 2 : Create iframe checkout using payment id
 
 
-### Create Payment link from Server
+### Create Payment id and link using API/SDK
 
-You can create payment link via Stark API or using stark SDK like [Omnipay](https://github.com/starkpay/omnipay) , [PHP SDK](https://github.com/starkpay/starkpay-php) or by following code
+You can create payment link via Stark API or using stark SDK like [Omnipay](https://github.com/starkpay/omnipay) , [PHP SDK](https://github.com/starkpay/starkpay-php) or by the following codes
 
 ### Curl
 ```curl
@@ -86,34 +86,37 @@ Example Response
     }
 }
 ```
-## Pass order id to the Checkout SDK
+## Create iframe checkout using payment id
 
 Custom Iframe with Javascript Callback
 
 ```javascript
-<script src="https://cdn.jsdelivr.net/gh/starkpay/javascript-sdk@0.0.1/src/stark.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/starkpay/javascript-sdk@0.0.2/src/stark.min.js"></script>
+```
+```html
+<iframe id="<iframe id>" class="custom_iframe"></iframe>
 ```
 ```javascript
 <script type="text/javascript">
 // Your custome iframe id
-StrakPay.set_iframe('<ifram id>');
+StarkPay.set_iframe('<iframe id>');
 // Payment Link Response -> id 
-StrakPay.load('<payment id>');
+StarkPay.load('<payment id>');
 //on load
-StrakPay.onLoadComplete = function() {
+StarkPay.onLoadComplete = function() {
   console.log('loading completed');
 }
 // on any generic error
-StrakPay.onError = function(error) {
+StarkPay.onError = function(error) {
   console.log(error);
 }
 // on successfull payment
-StrakPay.onPaymentSuccess = function(data) {
+StarkPay.onPaymentSuccess = function(data) {
   console.log('Payment Successfully Processed');
   console.log(data);
 }
 // on payment cancelation by the user
-StrakPay.onPaymentCancelled = function(data) {
+StarkPay.onPaymentCancelled = function(data) {
   console.log(data);
 }
 </script>
