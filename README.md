@@ -101,7 +101,7 @@ Example Response
 ```
 ## Create iframe checkout using payment id
 
-Custom Iframe with Javascript Callback
+Custom iFrame with Javascript Callback
 
 ```javascript
 <script src="https://cdn.jsdelivr.net/gh/starkpay/javascript-sdk@0.0.2/src/stark.min.js"></script>
@@ -123,9 +123,9 @@ StarkPay.onLoadComplete = function() {
 StarkPay.onError = function(error) {
   console.log(error);
 }
-// on successfull payment
+// payment broadcasted to the blockchain (once the payment is confirmed, the webhook will be triggered)
 StarkPay.onPaymentSuccess = function(data) {
-  console.log('Payment Successfully Processed');
+  console.log('Payment Successfully Broadcasted');
   console.log(data);
 }
 // on payment cancelation by the user
