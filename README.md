@@ -1,18 +1,31 @@
-# Stark Payment - Javascript SDK
-### Load payment via iframe
+# Stark Payments - Javascript SDK
+## Crypto Payment iFrame Checkout
 
-Prerequisites
- - Stark Payments Domain API Key from [ Stark dashboard](https://dashboard.starkpayments.net/)
+### Introduction
 
-Javascript Integration Steps
+This SDK has been developed at the request of business owners. Rather than re-directing a paying customer to a secure payment page on our gateway, the customer now remains on the merchant's online store and pay for goods and services in a more streamlined format.
 
-- Step 1 : Create Payment link using API/SDK
-- Step 2 : Create iframe checkout using payment id
+Developer's can integrate and run this SDK in a matter of minutes.
 
 
-### Create Payment id and link using API/SDK
+### Prerequisites
+ - API Key - You can obtain a API Live/Test Key by registering at [ Stark Payments](https://dashboard.starkpayments.net/)
 
-You can create payment link via Stark API or using stark SDK like [Omnipay](https://github.com/starkpay/omnipay) , [PHP SDK](https://github.com/starkpay/starkpay-php) or by the following codes
+### Javascript Integration Steps
+
+- Step 1 : Create Payment ID or Link using the Stark API or SDK
+- Step 2 : Create iFrame Checkout using payment id
+
+
+### Creating a Payment ID or Link
+
+There are several ways in which you can create a Payment ID or Link, including:
+
+- [Stark Crypto Payment API](https://pay.starkpayments.net/apidoc/)
+- [Omnipay Driver by Stark](https://github.com/starkpay/omnipay)
+- [PHP SDK](https://github.com/starkpay/starkpay-php)
+
+or by implementing the following code snippets:
 
 ### Curl
 ```curl
@@ -88,7 +101,7 @@ Example Response
 ```
 ## Create iframe checkout using payment id
 
-Custom Iframe with Javascript Callback
+Custom iFrame with Javascript Callback
 
 ```javascript
 <script src="https://cdn.jsdelivr.net/gh/starkpay/javascript-sdk@0.0.2/src/stark.min.js"></script>
@@ -110,9 +123,9 @@ StarkPay.onLoadComplete = function() {
 StarkPay.onError = function(error) {
   console.log(error);
 }
-// on successfull payment
+// payment broadcasted to the blockchain (once the payment is confirmed, the webhook will be triggered)
 StarkPay.onPaymentSuccess = function(data) {
-  console.log('Payment Successfully Processed');
+  console.log('Payment Successfully Broadcasted');
   console.log(data);
 }
 // on payment cancelation by the user
