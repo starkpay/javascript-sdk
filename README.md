@@ -104,7 +104,7 @@ Example Response
 Custom iFrame with Javascript Callback
 
 ```javascript
-<script src="https://cdn.jsdelivr.net/gh/starkpay/javascript-sdk@0.0.3/src/stark.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/starkpay/javascript-sdk@0.0.4/src/stark.min.js"></script>
 ```
 ```html
 <iframe id="<iframe id>" class="custom_iframe"></iframe>
